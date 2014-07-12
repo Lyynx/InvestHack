@@ -14,5 +14,12 @@ namespace InvestHackWeb.Controllers
 
             return View();
         }
+
+        public ActionResult About()
+        {
+             ViewBag.Title = "About Page";
+
+            return View();
+        }
     }
 }
