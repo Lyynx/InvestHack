@@ -178,9 +178,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Map.html" />
+    <Content Include="Map5.html" />
     <Content Include="Map2.html" />
     <Content Include="Map3.html" />
     <Content Include="Map4.html" />
+    <Content Include="MapSearch.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
