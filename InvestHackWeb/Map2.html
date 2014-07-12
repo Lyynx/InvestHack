@@ -34,6 +34,10 @@
         var geocoder = new google.maps.Geocoder();
         var address = "new york";
 
+        var input = document.getElementById('target');
+        var searchBox = new google.maps.places.SearchBox(input);
+        // searchBox.setBounds(map.getBounds());
+
         function search() {
             address = document.getElementById('new').value;
             lookupAddress();
@@ -67,7 +71,7 @@
 <body>
     <div id="map-canvas"></div>
     <div id="searchBox">
-        <input type="text" id="new" name="new" value="new york" />
+        <input type="text" id="target" name="new" value="new york" />
         <input type="button" value="Search" onclick="search();" />
     </div>
 </body>
