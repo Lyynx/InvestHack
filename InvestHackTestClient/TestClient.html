@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src='http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.1.2.min.js'></script>
+    <script>
+        //var appUrl = 'https://investhack.azure-mobile.net/';
+        var appUrl = 'http://localhost:50012/';
+        var appKey = 'mKcAkvIGofqikZcRoCHDfBswaznYLD51';
+
+        var MobileServiceClient = WindowsAzure.MobileServiceClient;
+        var client = new MobileServiceClient(appUrl, appKey);
+
+        client.invokeApi("Land", {
+            body: null,
+            method: "post"
+        }).done(function (results) {
+            var message = results.result.count + " item(s) marked as complete.";
+            var dialog = new Windows.UI.Popups.MessageDialog(message);
+            dialog.commands.append(okCommand);
+            dialog.showAsync().done(function () {
+                refreshTodoItems();
+            });
+        }, function (error) {
+            var dialog = new Windows.UI.Popups
+                .MessageDialog(error.message);
+            dialog.commands.append(okCommand);
+            dialog.showAsync().done();
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
