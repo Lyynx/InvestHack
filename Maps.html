@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script type="text/javascript" src="gmap3.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css" type="text/css" media="all" />
+    <style>
+        #test {
+            width: 800px;
+            height: 800px;
+            border: 2px dashed #ccc;
+        }
+    </style>
+</head>
+<body>
+    
+    <input type="text" id="address" />
+    <div id="test"></div>
+
+    <script type="text/javascript">
+
+        //showMap('perth');
+        $("#address").blur(function () {
+            showMap($("#address").val());
+        });
+
+        var values = [];
+
+        $.get("https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE", function (data) {
+            
+            $.each(data.features, function (index, feature) {
+               values.push({
+                   latLng: [feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
+                    data: feature.properties.STOPNAME + ' ' + feature.properties.STOPNUMBER
+                });
+            });
+            showMap((values));
+        });//{latLng:[48.8620722, 2.352047], data:"Paris !"},
+
+            function showMap(values1) {
+            $("#test").gmap3({
+                marker: {
+                    //values: [{ latLng: [-31.915885, 115.78747111111113], data: "Paris !" }],
+                    values:values1,
+                    options: {
+                        draggable: false
+                    },
+                    events: {
+                        mouseover: function (marker, event, context) {
+                            var map = $(this).gmap3("get"),
+                              infowindow = $(this).gmap3({ get: { name: "infowindow" } });
+                            if (infowindow) {
+                                infowindow.open(map, marker);
+                                infowindow.setContent(context.data);
+                            } else {
+                                $(this).gmap3({
+                                    infowindow: {
+                                        anchor: marker,
+                                        options: { content: context.data }
+                                    }
+                                });
+                            }
+                        },
+                        mouseout: function () {
+                            var infowindow = $(this).gmap3({ get: { name: "infowindow" } });
+                            if (infowindow) {
+                                infowindow.close();
+                            }
+                        }
+                    }
+                },
+                map: {
+                    options: {
+                        zoom: 14
+                    }
+                }
+            });
+        };
+
+    </script>
+
+
+</body>
+</html>
