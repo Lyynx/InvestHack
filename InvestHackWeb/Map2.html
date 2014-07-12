@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    
+
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <style type="text/css">
         html {
@@ -17,37 +17,58 @@
 
         #map-canvas {
             height: 100%;
+            z-index: 1;
+        }
+
+        #searchBox {
+            position: absolute;
+            top: 5px;
+            left: 100px;
+            z-index: 1;
         }
     </style>
 
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript">
 
-var geocoder = new google.maps.Geocoder();
-var address = "new york";
+        var geocoder = new google.maps.Geocoder();
+        var address = "new york";
 
-function showMap(lat, lon) {
-    var mapOptions = {
-        center: new google.maps.LatLng(lat, lon), // -34.397, 150.644
-        zoom: 8
-    };
-    var map = new google.maps.Map(document.getElementById("map-canvas"),
-        mapOptions);
-}
+        function search() {
+            address = document.getElementById('new').value;
+            lookupAddress();
+        }
 
-geocoder.geocode( { 'address': address}, function(results, status) {
+        function showMap(lat, lon) {
+            var mapOptions = {
+                center: new google.maps.LatLng(lat, lon), // -34.397, 150.644
+                zoom: 8
+            };
+            var map = new google.maps.Map(document.getElementById("map-canvas"),
+                mapOptions);
+        }
 
-if (status == google.maps.GeocoderStatus.OK) {
-    var latitude = results[0].geometry.location.lat();
-    var longitude = results[0].geometry.location.lng();
+        function lookupAddress() {
+            geocoder.geocode({ 'address': address }, function(results, status) {
 
-    showMap(latitude, longitude);
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var latitude = results[0].geometry.location.lat();
+                    var longitude = results[0].geometry.location.lng();
 
-}
-});
+                    showMap(latitude, longitude);
+
+                }
+            });
+        }
+
+        lookupAddress();
     </script>
 </head>
 <body>
-    <div id="map-canvas" />
+    <div id="map-canvas"></div>
+    <div id="searchBox">
+        <input type="text" id="new" name="new" value="new york" />
+        <input type="button" value="Search" onclick="search();" />
+    </div>
 </body>
 </html>
