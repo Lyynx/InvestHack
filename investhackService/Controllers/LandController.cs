@@ -15,6 +15,8 @@ namespace investhackService.Controllers
   //            methods: "*"  //, // null,                    // Response headers  'bar'
   //            //SupportsCredentials = true  // Allow credentials
   //)]
+    [EnableCors(origins: "http://investhack.azurewebsites.net, http://localhost:35327", headers: "*", methods: "*")]
+
     public class LandController : ApiController
     {
         public ApiServices Services { get; set; }

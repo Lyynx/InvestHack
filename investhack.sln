@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "investhack", "investhack\investhack.csproj", "{C8FCA4E8-5E5B-4B79-95A9-A74383823FEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "investhackService", "investhackService\investhackService.csproj", "{209FA716-A7AD-4095-BD70-C8710FC66FA7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0C64A03D-B10A-4175-84CB-67DE4FDBF789}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -65,16 +63,6 @@ Global
 		{C8FCA4E8-5E5B-4B79-95A9-A74383823FEC}.Release|x86.ActiveCfg = Release|x86
 		{C8FCA4E8-5E5B-4B79-95A9-A74383823FEC}.Release|x86.Build.0 = Release|x86
 		{C8FCA4E8-5E5B-4B79-95A9-A74383823FEC}.Release|x86.Deploy.0 = Release|x86
-		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|ARM.ActiveCfg = Release|Any CPU
-		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|x64.ActiveCfg = Release|Any CPU
-		{209FA716-A7AD-4095-BD70-C8710FC66FA7}.Release|x86.ActiveCfg = Release|Any CPU
 		{62D14D2B-EBD8-4452-AAAD-3D04BE3F566E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{62D14D2B-EBD8-4452-AAAD-3D04BE3F566E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62D14D2B-EBD8-4452-AAAD-3D04BE3F566E}.Debug|ARM.ActiveCfg = Debug|Any CPU

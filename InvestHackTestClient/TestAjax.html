@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        
+        $(function () {
+            var customer = { contact_name: "Scott", company_name: "HP" };
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(customer),
+                url: "http://localhost:38033/api/Land",
+                contentType: "application/json"
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -11,6 +11,8 @@ namespace InvestHackWeb
         {
             // Web API configuration and services
 
+            config.EnableCors();
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
