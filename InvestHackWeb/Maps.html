@@ -77,7 +77,9 @@
                             addressesLatLong.push(
                             {
                                 latLng: [results[0].geometry.location.lat(), results[0].geometry.location.lng()],
-                                data: value
+                            data: value,
+                            type: 'address',
+                            options:{icon: "http://maps.google.com/mapfiles/marker_green.png"}
                             });
                         }
                     }
