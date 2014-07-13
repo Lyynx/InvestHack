@@ -177,6 +177,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="gmap3.js" />
     <Content Include="gmap3.min.js" />
     <Content Include="Map.html" />
     <Content Include="Map5.html" />
