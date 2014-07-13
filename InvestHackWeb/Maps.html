@@ -34,6 +34,7 @@
         });
 
         var addresses = [];
+        addresses.push($("#address").val());
      
         function getAddresses() {
             var values = [];
@@ -55,7 +56,9 @@
             });
 
             // original query: https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE
+            
             var query = 'https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE&where=SUBURB%3D%27WOODLANDS%27&select=geometry,STOPNUMBER,STOPNAME,SUBURB';
+            //var query = 'https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE&where=SUBURB%3D%27FLOREAT%27&select=geometry,STOPNUMBER,STOPNAME,SUBURB';
 
             $.get(query, function(data) {
 
