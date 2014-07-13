@@ -21,5 +21,13 @@ namespace InvestHackWeb.Controllers
 
             return View();
         }
+
+        public ActionResult CommunityServices()
+        {
+            ViewBag.Title = "Community Services";
+
+            return View();
+        }
+
     }
 }

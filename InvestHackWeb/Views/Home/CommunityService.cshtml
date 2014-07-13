@@ -1,0 +1,153 @@
+﻿@model IEnumerable<InvestHackWeb.Models.CommunityService>
+
+@{
+    ViewBag.Title = "CommunityService";
+}
+
+<h2>CommunityService</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Provider_Approval_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProviderLegalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Suburb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email_Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Conditions_on_Approval)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfApprovedPlaces)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceApprovalGrantedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualityArea1Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualityArea2Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualityArea3Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualityArea4Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualityArea5Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualityArea6Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualityArea7Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OverallRating)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Provider_Approval_Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProviderLegalName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Suburb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postcode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email_Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Conditions_on_Approval)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfApprovedPlaces)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceApprovalGrantedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualityArea1Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualityArea2Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualityArea3Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualityArea4Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualityArea5Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualityArea6Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualityArea7Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OverallRating)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ServiceApprovalNumber }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ServiceApprovalNumber }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ServiceApprovalNumber })
+        </td>
+    </tr>
+}
+
+</table>

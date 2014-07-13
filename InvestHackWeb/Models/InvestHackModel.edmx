@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="investhack_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CommunityServices">
+          <Key>
+            <PropertyRef Name="ServiceApprovalNumber" />
+          </Key>
+          <Property Name="ServiceApprovalNumber" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Provider_Approval_Number" Type="varchar" MaxLength="11" />
+          <Property Name="ServiceName" Type="varchar" MaxLength="90" />
+          <Property Name="ProviderLegalName" Type="varchar" MaxLength="82" />
+          <Property Name="ServiceAddress" Type="varchar" MaxLength="76" />
+          <Property Name="Suburb" Type="varchar" MaxLength="23" />
+          <Property Name="State" Type="varchar" MaxLength="2" />
+          <Property Name="Postcode" Type="int" />
+          <Property Name="Phone" Type="varchar" MaxLength="29" />
+          <Property Name="Fax" Type="varchar" MaxLength="31" />
+          <Property Name="Email_Address" Type="varchar" MaxLength="49" />
+          <Property Name="Conditions_on_Approval" Type="varchar" MaxLength="878" />
+          <Property Name="NumberOfApprovedPlaces" Type="int" />
+          <Property Name="ServiceApprovalGrantedDate" Type="datetime" />
+          <Property Name="QualityArea1Rating" Type="varchar" MaxLength="32" />
+          <Property Name="QualityArea2Rating" Type="varchar" MaxLength="32" />
+          <Property Name="QualityArea3Rating" Type="varchar" MaxLength="32" />
+          <Property Name="QualityArea4Rating" Type="varchar" MaxLength="32" />
+          <Property Name="QualityArea5Rating" Type="varchar" MaxLength="32" />
+          <Property Name="QualityArea6Rating" Type="varchar" MaxLength="32" />
+          <Property Name="QualityArea7Rating" Type="varchar" MaxLength="32" />
+          <Property Name="OverallRating" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityContainer Name="investhack_dbModelStoreContainer">
+          <EntitySet Name="CommunityServices" EntityType="Self.CommunityServices" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="investhack_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CommunityService">
+          <Key>
+            <PropertyRef Name="ServiceApprovalNumber" />
+          </Key>
+          <Property Name="ServiceApprovalNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Provider_Approval_Number" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceName" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="ProviderLegalName" Type="String" MaxLength="82" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceAddress" Type="String" MaxLength="76" FixedLength="false" Unicode="false" />
+          <Property Name="Suburb" Type="String" MaxLength="23" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Postcode" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="29" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="31" FixedLength="false" Unicode="false" />
+          <Property Name="Email_Address" Type="String" MaxLength="49" FixedLength="false" Unicode="false" />
+          <Property Name="Conditions_on_Approval" Type="String" MaxLength="878" FixedLength="false" Unicode="false" />
+          <Property Name="NumberOfApprovedPlaces" Type="Int32" />
+          <Property Name="ServiceApprovalGrantedDate" Type="DateTime" Precision="3" />
+          <Property Name="QualityArea1Rating" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="QualityArea2Rating" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="QualityArea3Rating" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="QualityArea4Rating" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="QualityArea5Rating" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="QualityArea6Rating" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="QualityArea7Rating" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="OverallRating" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="investhack_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CommunityServices" EntityType="Self.CommunityService" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="investhack_dbModelStoreContainer" CdmEntityContainer="investhack_dbEntities">
+          <EntitySetMapping Name="CommunityServices">
+            <EntityTypeMapping TypeName="investhack_dbModel.CommunityService">
+              <MappingFragment StoreEntitySet="CommunityServices">
+                <ScalarProperty Name="ServiceApprovalNumber" ColumnName="ServiceApprovalNumber" />
+                <ScalarProperty Name="Provider_Approval_Number" ColumnName="Provider_Approval_Number" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="ProviderLegalName" ColumnName="ProviderLegalName" />
+                <ScalarProperty Name="ServiceAddress" ColumnName="ServiceAddress" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email_Address" />
+                <ScalarProperty Name="Conditions_on_Approval" ColumnName="Conditions_on_Approval" />
+                <ScalarProperty Name="NumberOfApprovedPlaces" ColumnName="NumberOfApprovedPlaces" />
+                <ScalarProperty Name="ServiceApprovalGrantedDate" ColumnName="ServiceApprovalGrantedDate" />
+                <ScalarProperty Name="QualityArea1Rating" ColumnName="QualityArea1Rating" />
+                <ScalarProperty Name="QualityArea2Rating" ColumnName="QualityArea2Rating" />
+                <ScalarProperty Name="QualityArea3Rating" ColumnName="QualityArea3Rating" />
+                <ScalarProperty Name="QualityArea4Rating" ColumnName="QualityArea4Rating" />
+                <ScalarProperty Name="QualityArea5Rating" ColumnName="QualityArea5Rating" />
+                <ScalarProperty Name="QualityArea6Rating" ColumnName="QualityArea6Rating" />
+                <ScalarProperty Name="QualityArea7Rating" ColumnName="QualityArea7Rating" />
+                <ScalarProperty Name="OverallRating" ColumnName="OverallRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
