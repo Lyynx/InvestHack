@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-    
+
     <input type="text" id="address" value="233 otram way, WOODLANDS" />
     <div id="test"></div>
 
@@ -28,22 +28,23 @@
 
         //showMap('perth');
         $("#address").blur(function () {
-            addresses.push($("#address").val()); //['233 otram way, WOODLANDS']; 
+            addresses.push($("#address").val()); //['233 otram way, WOODLANDS'];
             getAddresses();
             //showMap($("#address").val());
         });
 
         var addresses = [];
         addresses.push($("#address").val());
-     
+
         function getAddresses() {
             var values = [];
             var addressesLatLong = [];
-            $.each(addresses, function(index, value) {
+            var addressesWithinRange = [];
+            $.each(addresses, function (index, value) {
                 $("#test").gmap3({
                     getlatlng: {
                         address: value,
-                        callback: function(results) {
+                        callback: function (results) {
                             if (!results) return;
                             addressesLatLong.push(
                             {
@@ -56,27 +57,27 @@
             });
 
             // original query: https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE
-            
+
             var query = 'https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE&where=SUBURB%3D%27WOODLANDS%27&select=geometry,STOPNUMBER,STOPNAME,SUBURB';
             //var query = 'https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE&where=SUBURB%3D%27FLOREAT%27&select=geometry,STOPNUMBER,STOPNAME,SUBURB';
 
-            $.get(query, function(data) {
+            $.get(query, function (data) {
 
-                $.each(data.features, function(index, feature) {
+                $.each(data.features, function (index, feature) {
                     values.push({
                         latLng: [feature.geometry.coordinates[1], feature.geometry.coordinates[0]],
-                        data: feature.properties.STOPNAME + ' ' + feature.properties.STOPNUMBER
+                        data: feature.properties.STOPNAME + ' ' + feature.properties.STOPNUMBER,
+                        type: 'busStop'
                     });
-                    $.each(addressesLatLong, function(index, house) {
+                    $.each(addressesLatLong, function (index, house) {
                         var result = calculateDistance(house.latLng[0], house.latLng[1], feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
-                        //var result = google.maps.geometry.spherical.computeDistanceBetween(house.latLng, feature.geometry.coordinates);
                         if (result < 200) {
-                            values.push(house);
+                            addressesWithinRange.push(house);
                         }
                     });
                 });
-
-                //return values;
+                drawCircles(addressesWithinRange);
+                showMap((addressesWithinRange));
                 showMap((values));
             }); //{latLng:[48.8620722, 2.352047], data:"Paris !"},
 
@@ -95,13 +96,38 @@
             else if (d <= 1) return Math.round(d * 1000); //+ "m";
             return d * 1000;
         };
-        
 
-            function showMap(values1) {
+        function drawCircles(housesWithinRange) {
+            $.each(housesWithinRange, function (index, house) {
+                $("#test").gmap3({
+                    circle: {
+                        options: {
+                            center: house.latLng,
+                            radius: 250,
+                            fillColor: "#7FFF7F",
+                            strokeColor: "#00FF00"
+                        },
+                        events: {
+                            click: function (circle) {
+                                circle.setOptions({
+                                    fillColor: "#FFAF9F",
+                                    strokeColor: "#FF512F"
+                                });
+                            }
+                        },
+                        callback: function () {
+                            $(this).gmap3('get').setZoom(15);
+                        }
+                    }
+                });
+            });
+        };
+
+        function showMap(values1) {
             $("#test").gmap3({
                 marker: {
                     //values: [{ latLng: [-31.915885, 115.78747111111113], data: "Paris !" }],
-                    values:values1,
+                    values: values1,
                     options: {
                         draggable: false
                     },
