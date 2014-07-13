@@ -12,28 +12,30 @@
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css" type="text/css" media="all" />
     <link rel="stylesheet" href="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css" type="text/css" media="all" />
     <style>
-          body {
+        html {
+            height: 100%;
+        }
+
+        body {
             height: 100%;
             margin: 0;
             padding: 0;
         }
 
         #map-canvas {
-            width: 800px;
-             height: 800px;
-             border: 2px dashed #ccc;
+            width: 100%;
+            height: 100%;
+            border: 2px dashed #ccc;
             /*height: 100%;
             z-index: 1;*/
         }
 
-        #inputBox {
+        #address {
             position: absolute;
             top: 5px;
             left: 100px;
             z-index: 2;
         }
-
-        
     </style>
 </head>
 <body>
