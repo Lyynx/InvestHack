@@ -32,7 +32,15 @@
             position: absolute;
             top: 5px;
             left: 100px;
+            width : 200px;
             z-index: 2;
+        }
+
+        #suburb {
+            position: absolute;
+            top : 5px;
+            left : 400px;
+            z-index : 2;
         }
 
         #logo {
@@ -49,20 +57,32 @@
 <body>
 
     <input type="text" id="address" value="233 otram way, WOODLANDS" />
+
+    <input type="text" id="suburb" value="WOODLANDS" />
+
     <div id="map-canvas"></div>
     <img id="logo" src="Content/Images/InvestHack.png" />
 
     <script type="text/javascript">
+        var addresses = [];
+
+        addAddress();
+        getAddresses();
 
         //showMap('perth');
         $("#address").blur(function () {
-            addresses.push($("#address").val()); //['233 otram way, WOODLANDS'];
+            addAddress();
             getAddresses();
             //showMap($("#address").val());
         });
 
-        var addresses = [];
-        addresses.push($("#address").val());
+        $("#suburb").blur(function () {
+            getAddresses();
+        });
+
+        function addAddress() {
+            addresses.push($("#address").val());
+        }
 
         function getAddresses() {
             var values = [];
@@ -86,10 +106,9 @@
                 });
             });
 
-            // original query: https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE
+            var suburb = $("#suburb").val();
 
-            var query = 'https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE&where=SUBURB%3D%27WOODLANDS%27&select=geometry,STOPNUMBER,STOPNAME,SUBURB';
-            //var query = 'https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE&where=SUBURB%3D%27FLOREAT%27&select=geometry,STOPNUMBER,STOPNAME,SUBURB';
+            var query = 'https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE&where=SUBURB%3D%27' + suburb + '%27&select=geometry,STOPNUMBER,STOPNAME,SUBURB';
 
             $.get(query, function (data) {
 
@@ -192,9 +211,6 @@
                 }
             });
         };
-
-        getAddresses();
-
     </script>
 
 
