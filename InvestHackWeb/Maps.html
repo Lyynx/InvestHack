@@ -12,17 +12,34 @@
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css" type="text/css" media="all" />
     <link rel="stylesheet" href="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css" type="text/css" media="all" />
     <style>
-        #test {
-            width: 800px;
-            height: 800px;
-            border: 2px dashed #ccc;
+          body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
+
+        #map-canvas {
+            width: 800px;
+             height: 800px;
+             border: 2px dashed #ccc;
+            /*height: 100%;
+            z-index: 1;*/
+        }
+
+        #inputBox {
+            position: absolute;
+            top: 5px;
+            left: 100px;
+            z-index: 2;
+        }
+
+        
     </style>
 </head>
 <body>
 
     <input type="text" id="address" value="233 otram way, WOODLANDS" />
-    <div id="test"></div>
+    <div id="map-canvas"></div>
 
     <script type="text/javascript">
 
@@ -41,7 +58,7 @@
             var addressesLatLong = [];
             var addressesWithinRange = [];
             $.each(addresses, function (index, value) {
-                $("#test").gmap3({
+                $("#map-canvas").gmap3({
                     getlatlng: {
                         address: value,
                         callback: function (results) {
@@ -99,7 +116,7 @@
 
         function drawCircles(housesWithinRange) {
             $.each(housesWithinRange, function (index, house) {
-                $("#test").gmap3({
+                $("#map-canvas").gmap3({
                     circle: {
                         options: {
                             center: house.latLng,
@@ -124,7 +141,7 @@
         };
 
         function showMap(values1) {
-            $("#test").gmap3({
+            $("#map-canvas").gmap3({
                 marker: {
                     //values: [{ latLng: [-31.915885, 115.78747111111113], data: "Paris !" }],
                     values: values1,
