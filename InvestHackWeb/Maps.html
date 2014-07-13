@@ -56,7 +56,7 @@
 </head>
 <body>
 
-    <input type="text" id="address" value="233 otram way, WOODLANDS" />
+    <textarea id="address" rows="5" cols="100">233 otram way, WOODLANDS</textarea>
 
     <input type="text" id="suburb" value="WOODLANDS" />
 
@@ -81,7 +81,10 @@
         });
 
         function addAddress() {
-            addresses.push($("#address").val());
+            var values = $("#address").val().split(';');
+            $.each(values, function (index, value) {
+                addresses.push(value);
+            });           
         }
 
         function getAddresses() {
