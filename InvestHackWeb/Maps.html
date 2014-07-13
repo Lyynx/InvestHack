@@ -54,8 +54,10 @@
                 });
             });
 
+            // original query: https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE
+            var query = 'https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE&where=SUBURB%3D%27WOODLANDS%27&select=geometry,STOPNUMBER,STOPNAME,SUBURB';
 
-            $.get("https://www.googleapis.com/mapsengine/v1/tables/09372590152434720789-08620406515972909896/features?version=published&key=AIzaSyDB3manTIJORPPJL06pKafXmO_KxPPKysE", function(data) {
+            $.get(query, function(data) {
 
                 $.each(data.features, function(index, feature) {
                     values.push({
